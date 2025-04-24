@@ -7,13 +7,16 @@ on:
 jobs:
    build:
       runs-on: ubuntu-latest
+      
       steps:
          -name: build with maven
           run: mvn clean install -U
+
+          
          -name: build and deploy in dockerhub
           run:
-            docker login -u
+            docker login -u @DOCKER_USERNAME -P @DOCKER_PASSWORD $DOCKER_REGISTRY
             docker build -t jaijp/sms:latest
             docker push jaijp/sms:latest
-            docker logout
+            docker logout $DOCKER_REGISTRY
             
