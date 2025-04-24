@@ -9,11 +9,11 @@ jobs:
       runs-on: ubuntu-latest
       
       steps:
-         -name: build with maven
+        - name: build with maven
           run: mvn clean install -U
 
           
-         -name: build and deploy in dockerhub
+        - name: build and deploy in dockerhub
           run:
             docker login -u @DOCKER_USERNAME -P @DOCKER_PASSWORD $DOCKER_REGISTRY
             docker build -t jaijp/sms:latest
