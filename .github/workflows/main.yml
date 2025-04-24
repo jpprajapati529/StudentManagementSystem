@@ -1,0 +1,19 @@
+name: CICD Pipeline
+on:
+   push:
+      branches: "main"
+   pull_request:
+      branches: "main"
+jobs:
+   build:
+      runs-on: ubuntu-latest
+      steps:
+         -name: build with maven
+          run: mvn clean install -U
+         -name: build and deploy in dockerhub
+          run:
+            docker login -u
+            docker build -t jaijp/sms:latest
+            docker push jaijp/sms:latest
+            docker logout
+            
