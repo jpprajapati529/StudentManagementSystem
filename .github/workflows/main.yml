@@ -10,7 +10,8 @@ jobs:
       
       steps:
         - name: build with maven
-          run: mvn clean install -U
+          if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+          run: mvn clean install -B
 
           
         - name: build and deploy in dockerhub
