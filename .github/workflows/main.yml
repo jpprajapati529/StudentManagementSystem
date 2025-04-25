@@ -22,7 +22,7 @@ jobs:
             DOCKER_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
             DOCKER_PASSWORD: ${{secrets.DOCKERHUB_TOKEN}}
             IMAGE_NAME: jaijp/sms
-          run:
+          run: |
             docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" $DOCKER_REGISTRY
             docker build jaijp/sms:latest .
             docker push jaijp/sms:latest
