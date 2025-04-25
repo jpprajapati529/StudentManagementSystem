@@ -1,6 +1,6 @@
 package com.example.sms.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
