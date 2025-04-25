@@ -17,6 +17,10 @@ jobs:
 
           
         - name: build and deploy in dockerhub
+          env:
+            DOCKER_REGISTRY: docker.io
+            DOCKER_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
+            DOCKER_PASSWORD: ${{secrets.DOCKERHUB_TOKEN}}
           run:
             docker login -u @DOCKER_USERNAME -p @DOCKER_PASSWORD $DOCKER_REGISTRY
             docker build jaijp/sms:latest .
