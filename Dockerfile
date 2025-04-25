@@ -1,4 +1,4 @@
-FROM openjdk-17-jdk-slim
+FROM eclipse-temurin:21
 WORKDIR /app
 COPY target/sms-0.0.1-SNAPSHOT.jar /app/sms-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
