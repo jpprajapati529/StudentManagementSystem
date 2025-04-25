@@ -27,4 +27,14 @@ jobs:
             docker buildx build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
             docker logout $DOCKER_REGISTRY
+
+   deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          
+        - name: Kubernetes
+          env:
+            dd
             
