@@ -13,7 +13,7 @@ jobs:
         
         - name: build with maven
           # if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
-          run: mvn clean install -B
+          run: ${{ env.FULL_COMMAND }}
 
           
         - name: build and deploy in dockerhub
