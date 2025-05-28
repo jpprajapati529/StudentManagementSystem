@@ -16,7 +16,7 @@ jobs:
           run: mvn clean install -B
 
         - name: echo command
-          run: echo ${{ env.FULL_COMMAND }}
+          run: echo "${{ env.FULL_COMMAND }}"
 
           
         - name: build and deploy in dockerhub
