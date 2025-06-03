@@ -11,9 +11,9 @@ jobs:
       steps:
         - uses: actions/checkout@v4
         
-        - name: build with maven
-          # if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
-          run: mvn clean install -B
+        # - name: build with maven
+        #   # if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
+        #   run: mvn clean install -B
 
         - name: echo command
           run: echo "result:${{ env.FULL_COMMAND }}"
