@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sms-deployment
+	labels:
+	   app: sms-application
+specs:
+    replicas: 3
+    selector:
+	   matchLabels:
+	       app: sms-application
+	template:
+	   metadata:
+	       app: sms-application
+	   spec:
+	       containers:
+		       - name: sms-container
+			     image: jaijp/sms:latest
+				 ports:
+				   - containerPort: 8080
