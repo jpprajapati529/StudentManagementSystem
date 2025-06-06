@@ -21,8 +21,17 @@ jobs:
         - name: Install Docker Buildx Plugin
           run: |
             mkdir -p ~/.docker/cli-plugins/
-            curl -SL https://github.com/docker/buildx/releases/latest/download/buildx-linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
-            chmod +x ~/.docker/cli-plugins/docker-buildx
+             ARCH=$(uname -m)
+            if [ "$ARCH" = "x86_64" ]; then
+             PLATFORM="buildx-linux-amd64"
+            elseif [ "$ARCH" = "aarch64" ]; then
+             PLATFORM="buildx-arm64"
+            else
+             echo "Unsupported architecture: $ARCH"
+             exit 1
+            if
+             curl -SL https://github.com/docker/buildx/releases/latest/download/$PLATFORM -o ~/.docker/cli-plugins/docker-buildx
+             chmod +x ~/.docker/cli-plugins/docker-buildx
           
         - name: build and deploy in dockerhub
           env:
