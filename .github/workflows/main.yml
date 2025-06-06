@@ -18,21 +18,16 @@ jobs:
         - name: echo command
           run: echo "result:${{ env.FULL_COMMAND }}"
 
-        # - name: Install Docker Buildx Plugin
-        #   run: |
-        #      # Buildx 0.6+
-        #      docker buildx bake "https://github.com/docker/buildx.git"
-        #      mkdir -p ~/.docker/cli-plugins
-        #      mv ./bin/build/buildx ~/.docker/cli-plugins/docker-buildx
+        - name: Install Docker Buildx Plugin
+          run: |
+            mkdir -p ~/.docker/cli-plugins
+            curl -L https://github.com/docker/buildx/releases/download/v0.10.0/buildx-v0.10.0-linux-amd64 > ~/.docker/cli-plugins/docker-buildx
+            chmod +x ~/.docker/cli-plugins/docker-buildx
 
-        #      # Docker 19.03+
-        #      DOCKER_BUILDKIT=1 docker build --platform=local -o . "https://github.com/docker/buildx.git"
-        #      mkdir -p ~/.docker/cli-plugins
-        #      mv buildx ~/.docker/cli-plugins/docker-buildx
-
-        #      # Local
-        #      git clone https://github.com/docker/buildx.git && cd buildx
-        #      make install
+        - name: Enable Docker BuildKit
+          run: |
+            export DOCKER_BUILDKIT=1
+            docker buildx version
           
         - name: build and deploy in dockerhub
           env:
