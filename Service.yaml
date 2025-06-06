@@ -1,12 +1,12 @@
-apiVersion: apps/v1
+apiVersion: v1 # Corrected API version for Service
 kind: Service
 metadata:
-    name: sms-app-service
+  name: sms-app-service
 spec:
-    selector:
-	   app: sms-application
-	ports:
-	   - protocol: tcp
-	     port: 80
-		 targetPort: 8080
-	type: LoadBalancer
+  selector:
+    app: sms-application
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
