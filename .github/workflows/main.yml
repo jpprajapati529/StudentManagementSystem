@@ -28,6 +28,7 @@ jobs:
             
           run: |
             docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
+            docker buildx install
             docker buildx build --tag jaijp/sms:latest .
             docker push jaijp/sms:latest
             docker logout $DOCKER_REGISTRY
