@@ -18,20 +18,20 @@ jobs:
         - name: echo command
           run: echo "result:${{ env.FULL_COMMAND }}"
 
-        - name: Install Docker Buildx Plugin
-          run: |
-            mkdir -p ~/.docker/cli-plugins/
-             ARCH=$(uname -m)
-            if [ "$ARCH" = "x86_64" ]; then
-             PLATFORM="buildx-linux-amd64"
-            elseif [ "$ARCH" = "aarch64" ]; then
-             PLATFORM="buildx-arm64"
-            else
-             echo "Unsupported architecture: $ARCH"
-             exit 1
-            if
-             curl -SL https://github.com/docker/buildx/releases/latest/download/$PLATFORM -o ~/.docker/cli-plugins/docker-buildx
-             chmod +x ~/.docker/cli-plugins/docker-buildx
+        # - name: Install Docker Buildx Plugin
+        #   run: |
+        #     mkdir -p ~/.docker/cli-plugins/
+        #      ARCH=$(uname -m)
+        #     if [ "$ARCH" = "x86_64" ]; then
+        #      PLATFORM="buildx-linux-amd64"
+        #     elseif [ "$ARCH" = "aarch64" ]; then
+        #      PLATFORM="buildx-arm64"
+        #     else
+        #      echo "Unsupported architecture: $ARCH"
+        #      exit 1
+        #     if
+        #      curl -SL https://github.com/docker/buildx/releases/latest/download/$PLATFORM -o ~/.docker/cli-plugins/docker-buildx
+        #      chmod +x ~/.docker/cli-plugins/docker-buildx
           
         - name: build and deploy in dockerhub
           env:
@@ -42,7 +42,7 @@ jobs:
             
           run: |
             docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
-            docker buildx build --tag jaijp/sms:latest .
+            docker buildx build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
             docker logout $DOCKER_REGISTRY
             
