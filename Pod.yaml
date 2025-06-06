@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-    name: sms-app-pod
-    labels:
-       app: sms-application
-       environment: dev
+  name: sms-app-pod
+  labels:
+    app: sms-application
+    environment: dev
 spec:
-    containers:
-       - name: sms-container
-	 image: jaijp/sms:latest
-	 ports:
-            - containerPort: 8080
+  containers:
+    - name: sms-container
+      image: jaijp/sms:latest
+      ports:
+        - containerPort: 8080
