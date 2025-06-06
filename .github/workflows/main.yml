@@ -18,20 +18,21 @@ jobs:
         - name: echo command
           run: echo "result:${{ env.FULL_COMMAND }}"
 
-        # - name: Install Docker Buildx Plugin
-        #   run: |
-        #     mkdir -p ~/.docker/cli-plugins/
-        #      ARCH=$(uname -m)
-        #     if [ "$ARCH" = "x86_64" ]; then
-        #      PLATFORM="buildx-linux-amd64"
-        #     elseif [ "$ARCH" = "aarch64" ]; then
-        #      PLATFORM="buildx-arm64"
-        #     else
-        #      echo "Unsupported architecture: $ARCH"
-        #      exit 1
-        #     if
-        #      curl -SL https://github.com/docker/buildx/releases/latest/download/$PLATFORM -o ~/.docker/cli-plugins/docker-buildx
-        #      chmod +x ~/.docker/cli-plugins/docker-buildx
+        - name: Install Docker Buildx Plugin
+          run: |
+             # Buildx 0.6+
+             docker buildx bake "https://github.com/docker/buildx.git"
+             mkdir -p ~/.docker/cli-plugins
+             mv ./bin/build/buildx ~/.docker/cli-plugins/docker-buildx
+
+             # Docker 19.03+
+             DOCKER_BUILDKIT=1 docker build --platform=local -o . "https://github.com/docker/buildx.git"
+             mkdir -p ~/.docker/cli-plugins
+             mv buildx ~/.docker/cli-plugins/docker-buildx
+
+             # Local
+             git clone https://github.com/docker/buildx.git && cd buildx
+             make install
           
         - name: build and deploy in dockerhub
           env:
