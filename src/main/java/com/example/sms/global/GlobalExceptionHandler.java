@@ -1,4 +1,4 @@
-package com.example.sms.exception;
+package com.example.sms.global;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
