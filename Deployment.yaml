@@ -1,0 +1,21 @@
+apiVersion: apps/v1 # API version for Deployments
+kind: Deployment
+metadata:
+  name: sms-deployment # Name of the Deployment
+  labels:
+    app: sms-application # Labels for the Deployment object itself
+spec:                   # Corrected from 'specs'
+  replicas: 3           # Desired number of Pod replicas
+  selector:
+    matchLabels:
+      app: sms-application # Selects Pods with this label
+  template:
+    metadata:
+      labels:             # Added 'labels' key here
+        app: sms-application # Labels applied to the Pods created by this Deployment
+    spec:
+      containers:
+        - name: sms-container
+          image: jaijp/sms:latest # Container image
+          ports:
+            - containerPort: 8080 # Port exposed by the container
