@@ -40,5 +40,6 @@ jobs:
             docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
             docker build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
+            docker run jaijp/sms:latest
             docker logout $DOCKER_REGISTRY
             
