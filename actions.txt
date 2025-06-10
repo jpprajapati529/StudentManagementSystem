@@ -6,6 +6,7 @@ GitHub Actions is a powerful CI/CD platform. Here's a breakdown of common interv
 
 These questions cover the basics of GitHub Actions and are great for gauging a candidate's understanding of the core concepts.
 
+
 1.  **What are GitHub Actions, and why are they useful?**
     * **Answer:** GitHub Actions is a CI/CD (Continuous Integration/Continuous Delivery) platform built directly into GitHub. It allows you to automate software workflows, such as building, testing, and deploying code, right within your repository. Its usefulness lies in streamlining the development process, improving code quality through automated checks, and enabling continuous delivery.
 
