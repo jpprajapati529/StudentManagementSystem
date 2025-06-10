@@ -31,5 +31,5 @@ jobs:
             docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
             docker build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
-            docker run -d -p 8082/8080 jaijp/sms:latest
+            docker run -d -p 8081/8082 jaijp/sms:latest
             
