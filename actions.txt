@@ -9,6 +9,8 @@ These questions cover the basics of GitHub Actions and are great for gauging a c
 1.  **What are GitHub Actions, and why are they useful?**
     * **Answer:** GitHub Actions is a CI/CD (Continuous Integration/Continuous Delivery) platform built directly into GitHub. It allows you to automate software workflows, such as building, testing, and deploying code, right within your repository. Its usefulness lies in streamlining the development process, improving code quality through automated checks, and enabling continuous delivery.
 
+
+
 2.  **Explain the core components of a GitHub Actions workflow.**
     * **Answer:** A workflow is defined in a YAML file and typically consists of:
         * **Workflows:** The top-level automation process.
