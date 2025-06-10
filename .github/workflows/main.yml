@@ -32,5 +32,4 @@ jobs:
             docker build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
             docker run -d jaijp/sms:latest
-            docker logout $DOCKER_REGISTRY
             
