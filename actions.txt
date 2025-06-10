@@ -1,7 +1,6 @@
 GitHub Actions is a powerful CI/CD platform. Here's a breakdown of common interview questions, categorized by difficulty, to help you prepare:
 
 ---
-
 ### **Beginner/Fundamental Questions**
 
 These questions cover the basics of GitHub Actions and are great for gauging a candidate's understanding of the core concepts.
