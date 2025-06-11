@@ -38,7 +38,7 @@ jobs:
 
         - name: kube configure
           env:
-            KUBECONFIG_DATA: ${secrets.KUBECONFIG}
+            KUBECONFIG_DATA: ${{secrets.KUBECONFIG}}
           run: |
             mkdir -p $HOME/.kube
             echo "${ KUBECONFIG_DATA }" > $HOME/.kube/config
