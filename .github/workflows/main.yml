@@ -47,6 +47,9 @@ jobs:
         - name: setup kubectl
           uses: azure/setup-kubectl@v4
 
+        - name: test connection with k8s
+          run: kubectl cluster-info
+
         - name: deploy to kubernetes
           run: |
             kubectl apply -f Deployment.yaml --validate=false
