@@ -32,4 +32,22 @@ jobs:
             docker build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
             docker run -d jaijp/sms:latest
-            
+
+        - name: docker success
+          run: echo "docker is successfull"
+
+        - name: kube configure
+          run: |
+            mkdir -p $HOME/.kube
+            echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+            chmod 600 $HOME/.kube/config
+       
+        - name: setup kubectl
+          uses: actions/kubectl@v1
+
+        - name: deploy to kubernetes
+          run: |
+            kubectl apply -f Deployment.yaml
+            kubectl apply -f Service.yaml
+
+        
