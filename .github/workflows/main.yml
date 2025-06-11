@@ -43,7 +43,7 @@ jobs:
             chmod 600 $HOME/.kube/config
        
         - name: setup kubectl
-          uses: azure/kubectl@v1
+          uses: azure/setup-kubectl@v4
 
         - name: deploy to kubernetes
           run: |
