@@ -41,7 +41,7 @@ jobs:
             KUBECONFIG_DATA: ${{secrets.KUBECONFIG}}
           run: |
             mkdir -p $HOME/.kube
-            echo "$KUBECONFIG_DATA" > $HOME/.kube/config
+            echo "${KUBECONFIG_DATA}" > $HOME/.kube/config
             chmod 600 $HOME/.kube/config
        
         - name: setup kubectl
