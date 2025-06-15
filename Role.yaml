@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role # Use ClusterRole if you need cluster-wide permissions (e.g., creating namespaces)
+metadata:
+  name: github-actions-deployer
+  namespace: default # Must match the ServiceAccount's namespace
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: [""] # "" indicates core API group
+  resources: ["services"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: [""]
+  resources: ["pods"] # Needed for 'kubectl get pods' or debugging
+  verbs: ["get", "list", "watch"]
