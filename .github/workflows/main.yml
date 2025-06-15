@@ -43,6 +43,7 @@ jobs:
             mkdir -p $HOME/.kube
             echo "${KUBECONFIG_DATA}" > $HOME/.kube/config
             chmod 600 $HOME/.kube/config
+            kubectl apply -f k8s-rbac.yaml
        
         - name: setup kubectl
           uses: azure/setup-kubectl@v4
@@ -52,7 +53,6 @@ jobs:
 
         - name: deploy to kubernetes
           run: |
-            kubectl apply -f k8s-rbac.yaml
             kubectl apply -f Deployment.yaml --validate=false
             kubectl apply -f Service.yaml
 
