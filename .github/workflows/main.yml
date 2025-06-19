@@ -50,9 +50,12 @@ jobs:
         # - name: test connection with k8s
         #   run: sudo kubectl cluster-info
 
-        - name: deploy to kubernetes
+        - name: Set up KinD cluster
+          uses: helm/kind-action@v1
+
+        - name: Deploy to KinD
           run: |
-            kubectl apply -f Deployment.yaml --validate=false
-            kubectl apply -f Service.yaml
+             kubectl apply -f Deployment.yaml --validate=false
+             kubectl apply -f Service.yaml
 
         
