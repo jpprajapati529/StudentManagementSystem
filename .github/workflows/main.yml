@@ -18,7 +18,6 @@ jobs:
         - name: echo command
           run: echo "result:${{ env.FULL_COMMAND }}"
 
-       
           
         - name: build and deploy in dockerhub
           env:
