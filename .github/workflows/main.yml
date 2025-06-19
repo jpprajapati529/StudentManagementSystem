@@ -48,7 +48,7 @@ jobs:
           uses: azure/setup-kubectl@v4
 
         - name: test connection with k8s
-          run: kubectl cluster-info
+          run: sudo kubectl cluster-info
 
         - name: deploy to kubernetes
           run: |
