@@ -42,7 +42,7 @@ jobs:
             mkdir -p $HOME/.kube
             echo "${KUBECONFIG_DATA}" > $HOME/.kube/config
             chmod 600 $HOME/.kube/config
-            
+         
        
         - name: setup kubectl
           uses: azure/setup-kubectl@v4
