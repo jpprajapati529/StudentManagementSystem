@@ -30,7 +30,7 @@ jobs:
             docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" "$DOCKER_REGISTRY"
             docker build -t jaijp/sms:latest .
             docker push jaijp/sms:latest
-            docker run -d -p 8085:8081 jaijp/sms:latest
+            docker run -d -p jaijp/sms:latest
 
         - name: docker success
           run: echo "docker is successfull"
