@@ -5,9 +5,5 @@ metadata:
   name: eks-cluster1
   region: us-east-1
 
-nodeGroups:
-  - name: ng-1
-    instanceType: t3.medium
-    desiredCapacity: 2
-    minSize: 1
-    maxSize: 3
+autoModeConfig:
+  enabled: true
