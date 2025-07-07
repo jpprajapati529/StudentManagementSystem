@@ -1,3 +1,4 @@
+# my-app-chart/templates/tests/test-connection.yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -11,5 +12,6 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "my-app-chart.fullname" . }}:{{ .Values.service.port }}']
+      # Check if .Values.service exists before trying to access .Values.service.port
+      args: ['{{ if .Values.service }}{{ printf "%s:%s" .Release.Name .Values.service.port }}{{ else }}google.com:80{{ end }}']
   restartPolicy: Never

@@ -1,9 +1,16 @@
-# values.yaml
+# values.yaml for sms-application Helm Chart
+
 replicaCount: 3
+
 image:
   repository: jaijp/sms
   tag: latest
   pullPolicy: IfNotPresent
-containerPort: 8080
 
-# You might also add service, ingress, etc.
+containerPort: 8080 # This is the container's internal port
+
+# --- ADD THIS SERVICE SECTION ---
+service:
+  type: ClusterIP # Or NodePort, LoadBalancer depending on your needs
+  port: 80        # The port the Kubernetes Service will listen on
+  targetPort: 8080 # The port on the Pod/Container to route traffic to (matches containerPort)
