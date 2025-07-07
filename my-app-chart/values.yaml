@@ -14,3 +14,6 @@ service:
   type: ClusterIP # Or NodePort, LoadBalancer depending on your needs
   port: 80        # The port the Kubernetes Service will listen on
   targetPort: 8080 # The port on the Pod/Container to route traffic to (matches containerPort)
+
+labels:
+  app: sms-application
