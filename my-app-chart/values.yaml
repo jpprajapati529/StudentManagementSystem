@@ -1,0 +1,9 @@
+# values.yaml
+replicaCount: 3
+image:
+  repository: jaijp/sms
+  tag: latest
+  pullPolicy: IfNotPresent
+containerPort: 8080
+
+# You might also add service, ingress, etc.

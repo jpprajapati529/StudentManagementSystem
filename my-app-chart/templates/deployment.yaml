@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-app-chart.fullname" . }} # Helm helper for unique release name
+  labels:
+    {{- include "my-app-chart.labels" . | nindent 4 }} # Helm helper for common labels
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: sms-application # Or {{ .Values.labels.app }} if you parameterize labels
+  template:
+    metadata:
+      labels:
+        {{- include "my-app-chart.selectorLabels" . | nindent 8 }} # Helper for selector labels
+    spec:
+      containers:
+        - name: sms-container
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.containerPort }}

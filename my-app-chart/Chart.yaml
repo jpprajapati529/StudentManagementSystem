@@ -1,0 +1,6 @@
+apiVersion: v2
+name: my-app-chart
+description: A Helm chart for my SMS application
+type: application
+version: 0.1.0        # Chart's version (increment this on chart changes)
+appVersion: "latest"  # The version of your application (matches image:tag default)
