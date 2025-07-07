@@ -57,5 +57,3 @@ jobs:
           run: |
              kubectl apply -f Deployment.yaml --validate=false
              kubectl apply -f Service.yaml
-
-        
