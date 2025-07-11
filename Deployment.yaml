@@ -16,6 +16,6 @@ spec:                   # Corrected from 'specs'
     spec:
       containers:
         - name: sms-container
-          image: jaijp/sms:latest # Container image
+          image: jaijp/sms:v2 # Container image
           ports:
             - containerPort: 8080 # Port exposed by the container
